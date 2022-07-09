@@ -4,7 +4,10 @@
  **/
 
 package org.example.sbv1;
+
+import org.example.sbv1.entity.Passport;
 import org.example.sbv1.entity.Person;
+import org.example.sbv1.repository.PassportRepository;
 import org.example.sbv1.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,24 +20,33 @@ import java.util.List;
 @SpringBootApplication
 public class SpringdataJPAApplication implements CommandLineRunner {
 
-        public static void main(String[] args) {
-            SpringApplication.run(SpringdataJPAApplication.class, args);
-        }
+    public static void main(String[] args) {
+        SpringApplication.run(SpringdataJPAApplication.class, args);
+    }
 
-        @Autowired
-        PersonRepository personRepository;
+    @Autowired
+    PersonRepository personRepository;
+    @Autowired
+    PassportRepository passportRepository;
 
-        @Override
-        public void run(String... args) throws Exception {
 
-//        Person anna = new Person("Anna", "Andreeva", "Samara");
+    @Override
+    public void run(String... args) throws Exception {
+
+//        Person anna = new Person("Bella", "Andreeva", "Samara");
 //        Person olesya = new Person("Olesya", "Andreeva", "Moscow");
-//        Person alex = new Person("Alex", "Andreev", "Omsk");
+//        Passport passportAnna =   new Passport("C111111");
+//        Passport passportOlesya = new Passport("D222222");
+//        anna.setPassport(passportAnna);
+//        olesya.setPassport(passportOlesya);
 //
-//        List<Person> people = Arrays.asList(anna, olesya, alex);
+//        List<Person> people = Arrays.asList(anna, olesya);
+//
+//        personRepository.saveAll(people);
 
-      //  personRepository.saveAll(people);
+        System.out.println("<<<<<<"+passportRepository.findAll());
 
-        System.out.println("<<<<<<<<" + personRepository.findByFirstName("Olesya"));
-        }
+
+
+    }
 }
