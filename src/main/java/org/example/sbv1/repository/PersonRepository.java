@@ -17,4 +17,6 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
     @Query("select p from Person p order by firstName")
     List<Person> findAllOrderedByFirstName();
 
+    @Query("select distinct p from Person p join fetch p.phones")
+    List<Person> findAllWithPhones();
 }

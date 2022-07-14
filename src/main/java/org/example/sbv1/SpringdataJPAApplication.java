@@ -7,6 +7,7 @@ package org.example.sbv1;
 
 import org.example.sbv1.entity.Passport;
 import org.example.sbv1.entity.Person;
+import org.example.sbv1.entity.Phone;
 import org.example.sbv1.repository.PassportRepository;
 import org.example.sbv1.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,18 +34,34 @@ public class SpringdataJPAApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-//        Person anna = new Person("Bella", "Andreeva", "Samara");
-//        Person olesya = new Person("Olesya", "Andreeva", "Moscow");
-//        Passport passportAnna =   new Passport("C111111");
-//        Passport passportOlesya = new Passport("D222222");
-//        anna.setPassport(passportAnna);
-//        olesya.setPassport(passportOlesya);
-//
-//        List<Person> people = Arrays.asList(anna, olesya);
-//
-//        personRepository.saveAll(people);
+        Person anna = new Person("Bella", "Andreeva", "Samara");
+        Person olesya = new Person("Kolesya", "Andreeva", "Moscow");
 
-        System.out.println("<<<<<<"+passportRepository.findAll());
+        //passport
+        Passport passportAnna =   new Passport("B111111");
+        Passport passportOlesya = new Passport("O222222");
+
+        anna.setPassport(passportAnna);
+        olesya.setPassport(passportOlesya);
+
+        //phones
+        Phone phone1 = new Phone("123-123-123");
+        Phone phone2 = new Phone("222-222-222");
+        Phone phone3 = new Phone("333-333-333");
+        Phone phone4 = new Phone("444-444-444");
+
+        anna.setPassport(passportAnna);
+        anna.setPhones(Arrays.asList(phone1, phone2));
+       // anna.setAddresses(Arrays.asList(address1, address2));
+
+        olesya.setPassport(passportOlesya);
+        olesya.setPhones(Arrays.asList(phone3, phone4));
+      //  olesya.setAddresses(Arrays.asList(address3, address4));
+
+        List<Person> people = Arrays.asList(anna, olesya);
+
+        personRepository.saveAll(people);
+
 
 
 

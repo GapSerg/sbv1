@@ -6,8 +6,10 @@
 package org.example.sbv1.entity;
 
 import lombok.Data;
+import org.hibernate.FetchMode;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -24,6 +26,10 @@ public class Person {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pasport_id")
     private Passport passport;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "person_id")
+    private List<Phone> phones;
+
 
     public Person() {
     }
