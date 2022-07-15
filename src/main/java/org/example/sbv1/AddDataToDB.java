@@ -5,24 +5,17 @@
 
 package org.example.sbv1;
 
-import org.example.sbv1.entity.Passport;
-import org.example.sbv1.entity.Person;
-import org.example.sbv1.entity.Phone;
 import org.example.sbv1.repository.PassportRepository;
 import org.example.sbv1.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.Arrays;
-import java.util.List;
 
 //@SpringBootApplication
-public class SpringdataJPAApplication implements CommandLineRunner {
+public class AddDataToDB implements CommandLineRunner {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringdataJPAApplication.class, args);
+        SpringApplication.run(AddDataToDB.class, args);
     }
 
     @Autowired

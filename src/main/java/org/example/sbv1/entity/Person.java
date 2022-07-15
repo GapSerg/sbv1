@@ -10,6 +10,7 @@ import org.hibernate.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -29,6 +30,15 @@ public class Person {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
     private List<Phone> phones;
+
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "person_role", joinColumns = @JoinColumn(name = "person_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
+
+    private String email;
+    private String password;
+    private Boolean active;
 
 
     public Person() {

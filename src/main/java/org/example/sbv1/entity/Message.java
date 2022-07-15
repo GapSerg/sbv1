@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -17,10 +18,15 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Message {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     String text;
     String tag;
+
+    public Message(String text, String tag) {
+        this.text = text;
+        this.tag = tag;
+    }
 
     public Message(String text) {
         this.text = text;

@@ -2,16 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Main Page</title>
+  <title>START PAGE</title>
  </head>
 
 <body>
 
-<h1 >Hello, you can join to chat! </h1>
+<h1 >Hello, you can write message! </h1>
+<p></p>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+<p></p>
 
-   <form method="post" action="/start" th:object="${message}" >
+   <form method="post" th:action="@{/start}" th:object="${message}" >
        <input type="text"  th:field="*{text}" placeholder="Insert message" >
-       <input type="text"  th:field="*{tag}" placeholder="Insert message" >
+       <input type="text"  th:field="*{tag}" placeholder="Insert tag" >
        <button type="submit">Enter</button>
    </form>
 
@@ -26,5 +31,8 @@
  </div>
 
 </th:block>
+
+
+
 </body>
 </html>
