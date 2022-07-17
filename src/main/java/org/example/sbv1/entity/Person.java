@@ -7,15 +7,18 @@ package org.example.sbv1.entity;
 
 import lombok.Data;
 import org.hibernate.FetchMode;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
 
 @Entity
 @Data
-public class Person {
+public class Person implements UserDetails {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -39,6 +42,10 @@ public class Person {
     private String email;
     private String password;
     private Boolean active;
+
+    public boolean isActive() {
+        return active;
+    }
 
 
     public Person() {
@@ -66,5 +73,35 @@ public class Person {
                 ", address='" + address + '\'' +
 
                 '}';
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
+    }
+
+    @Override
+    public String getUsername() {
+        return getFirstName()+"  "+ getLastName();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return isActive();
     }
 }

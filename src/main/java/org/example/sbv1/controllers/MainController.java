@@ -11,6 +11,7 @@ import org.example.sbv1.entity.Role;
 import org.example.sbv1.repository.MessageRepository;
 import org.example.sbv1.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,8 +40,11 @@ public class MainController {
     }
 
     @PostMapping("/start")
-    public String newMessage(@ModelAttribute("message") Message message) {
+    public String newMessage(
+            @AuthenticationPrincipal Person person,
+            @ModelAttribute("message") Message message) {
 
+        message.setAuthor(person);
         messageRepository.save(message);
 
 
@@ -56,9 +60,9 @@ public class MainController {
 
     @PostMapping("/registration")
     public String addUser(@ModelAttribute("person") Person person, Model model) {
-        System.out.println(person.getEmail());
+
         Person personFromDb = personRepository.findByEmail(person.getEmail());
-        System.out.println(person.getEmail());
+
         if (personFromDb != null) {
             model.addAttribute("error", "User exists!");
             return "registration";
@@ -66,7 +70,7 @@ public class MainController {
         System.out.println(person.getEmail());
         person.setActive(true);
         person.setRoles(Collections.singleton(Role.USER));
-        System.out.println(person.getRoles());
+
         personRepository.save(person);
 
         return "redirect:/login";

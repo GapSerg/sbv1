@@ -8,10 +8,7 @@ package org.example.sbv1.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -23,10 +20,21 @@ public class Message {
     String text;
     String tag;
 
-    public Message(String text, String tag) {
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_id")
+    Person author;
+
+    public Message(String text, String tag, Person author) {
         this.text = text;
         this.tag = tag;
+
+
     }
+
+    public String getPerson(){
+      return author != null ? author.getUsername() : "<none>";
+    }
+
 
     public Message(String text) {
         this.text = text;

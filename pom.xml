@@ -15,6 +15,7 @@
     <artifactId>sbv1</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -74,8 +75,17 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+
+
             </plugin>
+
+
         </plugins>
+
+
+
+
+
     </build>
 
 </project>
