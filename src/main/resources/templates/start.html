@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>START PAGE</title>
+ </head>
+
+<body>
+
+<h1 >Hello, you can write message! </h1>
+<p></p>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+<p></p>
+
+   <form method="post" th:action="@{/start}" th:object="${message}" >
+       <input type="text"  th:field="*{text}" placeholder="Insert message" >
+       <input type="text"  th:field="*{tag}" placeholder="Insert tag" >
+       <button type="submit">Enter</button>
+   </form>
+
+<div>Список сообщений</div>
+
+<th:block th:each="m: ${messages}">
+    <div>
+    <b th:text="${m.getId()}"> id </b>
+    <span th:text="${m.getText()}" >message</span>
+    <i th:text="${m.getTag()}">tag</i>
+    <strong th:text="${m.getPerson()}">tag</strong>
+
+
+ </div>
+
+</th:block>
+
+
+
+</body>
+</html>
