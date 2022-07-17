@@ -11,12 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 
-//@SpringBootApplication
 public class AddDataToDB implements CommandLineRunner {
-
-//    public static void main(String[] args) {
-//        SpringApplication.run(AddDataToDB.class, args);
-//    }
 
     @Autowired
     PersonRepository personRepository;
