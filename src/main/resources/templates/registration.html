@@ -13,6 +13,8 @@
 <form th:action="@{/registration}" method="post" th:object="${person}">
     <div><label> E-mail : <input type="text" th:field="*{email}"> </label></div>
     <div><label> Password: <input type="password"  th:field="*{password}"/> </label></div>
+    <div><label> Firstname : <input type="text" th:field="*{firstName}"> </label></div>
+    <div><label> Lastname: <input type="text"  th:field="*{lastName}"/> </label></div>
     <div><input type="submit" value="Sign In"/></div>
 </form>
 
